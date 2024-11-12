@@ -235,6 +235,8 @@ export default function CourseScreen() {
               const date = dayjs.unix(schedule.start_date / 1000)
               const now = dayjs()
 
+              const isBooked = orders.some(order => order.schedule_nano_id === schedule.id)
+
               return (
                 <Card key={schedule.id} style={[styles.scheduleCard, { marginBottom: 10 }]}>
                   <Text category="s1">
@@ -249,10 +251,10 @@ export default function CourseScreen() {
                   <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10}}>
                     <Button
                       size="small"
-                      disabled={now.isAfter(date) || orders.some(order => order.schedule_nano_id === schedule.id)}
+                      disabled={now.isAfter(date) || isBooked}
                       onPress={() => setBooking({ course, schedule })}
                     >
-                      Book Now
+                      { isBooked ? 'You Booked' : 'Book Now' }
                     </Button>
                   </View>
                 </Card>

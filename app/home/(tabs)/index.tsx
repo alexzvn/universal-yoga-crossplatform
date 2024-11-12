@@ -57,8 +57,8 @@ const CourseCard = ({ course, style, onPress }: CourseCardProps) => {
       footer={() => (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, paddingHorizontal: 15, paddingVertical: 10}}>
           <View />
-          <Button size="small">
-            Book Now
+          <Button size="small" onPress={onPress}>
+            Learn More
           </Button>
         </View>
       )}
