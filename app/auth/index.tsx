@@ -62,7 +62,8 @@ export default function Auth() {
 
   return (
     <Layout style={styles.container}>
-      <Text category="h2" style={{ marginBottom: 50 }}>Sign In</Text>
+      <Text category="h2" style={{ marginBottom: 10 }}>Sign In</Text>
+      <Text category="s1"  style={{ marginBottom: 50 }}>Universal Yoga for Customer</Text>
 
       <Input
         placeholder="Email"

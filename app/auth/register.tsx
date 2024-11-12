@@ -72,7 +72,8 @@ export default function Register() {
 
   return (
     <Layout style={styles.container}>
-      <Text category="h2" style={{ marginBottom: 50 }}>Register Account</Text>
+      <Text category="h2" style={{ marginBottom: 10 }}>Register Account</Text>]
+      <Text category="s1"  style={{ marginBottom: 50 }}>Universal Yoga for Customer</Text>
 
       <Input
         placeholder="Email"
