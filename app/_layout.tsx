@@ -10,6 +10,7 @@ import { Slot } from 'expo-router'
 import { useColorScheme } from '@/hooks/useColorScheme';
 import Toast from 'react-native-toast-message';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { SafeAreaView } from 'react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

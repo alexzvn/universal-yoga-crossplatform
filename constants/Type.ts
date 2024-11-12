@@ -6,7 +6,7 @@ export type Course = {
   description: string
   day_of_week: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
   type: 'AERIAL_YOGA' | 'FAMILY_YOGA' | 'FLOW_YOGA'
-  start_time: string
+  start_time: number
   price: number
   capacity: number
   duration: number
@@ -30,6 +30,7 @@ export type Schedule = {
 
 export type Order = {
   user_id: string
+  price: number
   course_nano_id: string
   schedule_nano_id: string
   created_at: number

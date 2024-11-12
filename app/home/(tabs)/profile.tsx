@@ -36,13 +36,8 @@ export default function ProfileScreen() {
   }, []);
 
   const handleSignOut = () => {
+    router.push('/auth')
     auth.signOut()
-      .then(() => {
-        router.push('/auth');
-      })
-      .catch((error) => {
-        console.error("Sign out error:", error);
-      });
   };
 
   return (

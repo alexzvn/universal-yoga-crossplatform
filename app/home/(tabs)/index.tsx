@@ -26,12 +26,20 @@ const styles = StyleSheet.create({
   }
 });
 
-const CourseCard = ({ course, style }: { course: WithId<Course>, style?: StyleProps }) => {
+type CourseCardProps = {
+  course: WithId<Course>
+  style?: StyleProps
+  onPress?: () => unknown
+  onBook?: () => unknown
+}
+
+const CourseCard = ({ course, style, onPress }: CourseCardProps) => {
 
   const capitalize = (val: string) => String(val).charAt(0).toUpperCase() + String(val).slice(1)
 
   return (
     <Card 
+      onPress={onPress}
       style={style}
       header={() => (
         <View style={{ paddingHorizontal: 15, paddingVertical: 10 }}>
@@ -74,7 +82,7 @@ export default function HomeScreen() {
     // Set up realtime listener for courses
     const coursesRef = collection(firestore, 'courses');
 
-    const unsubscribe = onSnapshot(coursesRef, (snapshot) => {
+    return onSnapshot(coursesRef, (snapshot) => {
       const coursesData: WithId<Course>[] = [];
       snapshot.forEach((doc) => {
         coursesData.push({
@@ -89,8 +97,6 @@ export default function HomeScreen() {
       console.error("Error fetching courses:", error);
     });
 
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
   }, []);
 
   return (
@@ -105,7 +111,13 @@ export default function HomeScreen() {
           <Layout style={styles.section}>
             <Text category="h6" style={styles.sectionTitle}>Available Classes</Text>
             {courses.map(course => (
-              <CourseCard course={course} style={{ marginBottom: 10 }} />
+              <CourseCard
+                key={course.id}
+                // @ts-ignore
+                onPress={() => router.push('/home/' + course.id)}
+                course={course} 
+                style={{ marginBottom: 10 }}
+              />
             ))}
             {courses.length === 0 && (
               <Text appearance="hint">No classes available</Text>
