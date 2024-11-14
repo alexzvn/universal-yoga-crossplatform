@@ -11,6 +11,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import Toast from 'react-native-toast-message';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -32,12 +33,12 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <NavigationContainer>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={colorScheme === 'dark' ? eva.dark : eva.light}>
         <Slot />
         <Toast />
       </ApplicationProvider>
-    </>
+    </NavigationContainer>
   );
 }

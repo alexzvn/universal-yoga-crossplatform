@@ -4,6 +4,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { View } from 'react-native-reanimated/lib/typescript/Animated';
 import { SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 const PersonIcon = (props: any) => (
   <Icon {...props} name='person-outline'/>
